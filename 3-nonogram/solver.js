@@ -78,8 +78,10 @@ function searchPossibilities(rule, row) {
 }
 
 async function solve(board) {
-    board.display();
-    if (window.stepDelay != 0) await sleep(window.stepDelay);
+    if (window.stepDelay != 0) {
+        board.display();
+        await sleep(window.stepDelay);
+    }
 
     // check if board is completed
     if (board.state.every((row) => row.every((val) => val != null)))
