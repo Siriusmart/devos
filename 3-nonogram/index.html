@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nonogram Solver</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    #definition {
+      display: block;
+      font-size: larger;
+      border: none;
+      width: calc(100vw - 40px);
+      height: calc(100vh - 40px);
+      margin: 0;
+      padding: 20px;
+      background-color: transparent;
+    }
+
+    #options {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: block;
+      align-items: right;
+    }
+
+    #options * {
+      display: block;
+      position: relative;
+      border: none;
+      margin: 7px;
+      padding: 3px;
+    }
+
+    #hint {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      max-width: 50vw;
+      opacity: 0.5;
+      z-index: -100;
+    }
+
+    #board {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+  <body>
+    <div id="setup">
+      <textarea id="definition"></textarea>
+      <div id="options">
+        <label>step delay (ms)</label>
+        <input type="number" min="0" max="1000" value="250" id="delay" />
+        <button id="start" onclick="start()">Solve</button>
+      </div>
+      <p id="hint">
+        Paste your nonogram definition here. The first row gives the height
+        <i>m</i> and width <i>n</i> of the nonogram. The next <i>m</i> lines
+        give the rules for the rows, and the next <i>n</i> lines gives the rules
+        for the columns.
+      </p>
+    </div>
+    <canvas hidden id="board"></canvas>
+    <script src="./utils.js"></script>
+    <script src="./board.js"></script>
+    <script src="./solver.js"></script>
+    <script src="./input.js"></script>
+  </body>
+</html>
