@@ -166,6 +166,3 @@ async function solve(board) {
     let possibility2 = board.mark(minDeviation[0], minDeviation[1]);
     return solve(possibility2);
 }
-
-(async () => {
-})();
